@@ -1,8 +1,8 @@
 """
 AccountBalance class.
 """
-
-from typing import Dict
+from __future__ import annotations
+from typing import Dict,Optional
 
 from hiero_sdk_python.hapi.services.crypto_get_account_balance_pb2 import (
     CryptoGetAccountBalanceResponse,
@@ -20,7 +20,11 @@ class AccountBalance:
         token_balances (dict): A dictionary mapping TokenId to token balances.
     """
 
-    def __init__(self, hbars: Hbar, token_balances: Dict[TokenId, int] = None) -> None:
+    def __init__(
+        self,
+        hbars: Hbar,
+        token_balances: Optional[Dict[TokenId, int]] = None,
+    ) -> None:
         """
         Initializes the AccountBalance with the given hbar balance and token balances.
 
@@ -32,7 +36,7 @@ class AccountBalance:
         self.token_balances = token_balances or {}
 
     @classmethod
-    def _from_proto(cls, proto: CryptoGetAccountBalanceResponse) -> "AccountBalance":
+    def _from_proto(cls, proto: CryptoGetAccountBalanceResponse) -> AccountBalance:
         """
         Creates an AccountBalance instance from a protobuf response.
 
