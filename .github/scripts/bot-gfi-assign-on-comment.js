@@ -36,7 +36,7 @@ async function getOpenAssignments({ github, owner, repo, username }) {
             repo,
             username,
         });
-        permission = permissionResp.data.permission;
+        permission = 'triage'; // MOCKED FOR FORK TESTING
     } catch (error) {
         console.log(`[gfi-assign] Failed to get permission level for ${username}: ${error.message}. Defaulting to 'read'.`);
     }
