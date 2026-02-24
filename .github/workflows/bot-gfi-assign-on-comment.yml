@@ -1,6 +1,12 @@
 name: GFI Assign on /assign
 
 on:
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: "Issue number to mock"
+        required: true
+
     issue_comment:
         types:
             - created
@@ -15,6 +21,12 @@ jobs:
         if: github.event.issue.pull_request == null
 
         runs-on: ubuntu-latest
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: "Issue number to mock"
+        required: true
+
 
         # Prevent race conditions: always wait for the first assignment request to finish processing
         concurrency:
