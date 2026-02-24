@@ -48,7 +48,7 @@ jobs:
               });
               context.payload = {
                 issue: real_issue,
-                comment: { user: { login: 'exploreriii', type: 'User' }, body: '/assign' }
+                comment: { user: { login: 'ambicuity', type: 'User' }, body: '/assign' }
               };
             }
             const script = require('./.github/scripts/bot-gfi-assign-on-comment.js');
