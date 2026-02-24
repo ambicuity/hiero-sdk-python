@@ -41,8 +41,13 @@ jobs:
         with:
           script: |
             if (context.eventName === 'workflow_dispatch') {
+              const { data: real_issue } = await github.rest.issues.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: Number(context.payload.inputs.issue_number)
+              });
               context.payload = {
-                issue: { number: Number(context.payload.inputs.issue_number), pull_request: null },
+                issue: real_issue,
                 comment: { user: { login: 'exploreriii', type: 'User' }, body: '/assign' }
               };
             }
