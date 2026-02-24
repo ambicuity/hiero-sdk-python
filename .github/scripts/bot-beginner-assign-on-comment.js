@@ -168,7 +168,7 @@ module.exports = async ({ github, context }) => {
           repo: repo.name,
           username,
         });
-        permission = 'triage'; // MOCKED FOR FORK TESTING
+        permission = permissionResp.data.permission;
       } catch (error) {
         console.log(`[Beginner Bot] Failed to get permission level for ${username}: ${error.message}. Defaulting to 'read'.`);
       }
